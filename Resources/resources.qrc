@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/Scene">
+        <file alias="background_base">ResFiles/Scene/background_base.png</file>
+        <file alias="menu_background">ResFiles/Scene/menu_background.png</file>
+    </qresource>
+    <qresource prefix="/Button">
+        <file alias="start_button">ResFiles/Button/start_button.png</file>
+        <file alias="knapsack_button">ResFiles/Button/knapsack_button.png</file>
+        <file alias="set_button">ResFiles/Button/set_button.png</file>
+        <file alias="exit_button">ResFiles/Button/exit_button.png</file>
+    </qresource>
+</RCC>
