@@ -1,3 +1,4 @@
 # my ignore
+/res # 本项目资源文件，与 Resources 重复
 /out
 .vs
