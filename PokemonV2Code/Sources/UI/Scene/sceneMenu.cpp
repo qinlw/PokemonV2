@@ -1,42 +1,42 @@
-#include "Scene/sceneMenu.h"
+ï»¿#include "Scene/sceneMenu.h"
 
 
 SceneMenu::SceneMenu(QWidget* parent) : SceneBase(parent)
 {
-    // ³õÊ¼»¯pixmap
+    // åˆå§‹åŒ–pixmap
     background = globalPicture->getPixmap(globalString->background);
     startButtonBackground = globalPicture->getPixmap(globalString->startButtonBackground);
     knapsackButtonBackground = globalPicture->getPixmap(globalString->knapsackButtonBackground);
     setButtonBackground = globalPicture->getPixmap(globalString->setButtonBackground);
     exitButtonBackground = globalPicture->getPixmap(globalString->exitButtonBackground);
 
-    // ³õÊ¼»¯Æ«ÒÆÁ¿
+    // åˆå§‹åŒ–åç§»é‡
     buttonXOffset = -38;
     buttonYOffset = (sceneHeight - startButtonBackground.height()  * 4) / 5;
 
-    // ´°¿Ú±³¾°
+    // çª—å£èƒŒæ™¯
     setAutoFillBackground(true);
     QPalette paletteWindow;
     paletteWindow.setBrush(QPalette::Window, QBrush(background));
     setPalette(paletteWindow);
 
-    // °´Å¥
-    // ¿ªÊ¼°´Å¥
+    // æŒ‰é’®
+    // å¼€å§‹æŒ‰é’®
     std::pair<int, int> startButtonPosition = { sceneWidth - startButtonBackground.width() + buttonXOffset, buttonYOffset };
     btnStart = new ClickButton(this);
     btnStart->setButtonPixmap(startButtonBackground);
     btnStart->setButtonPosition(startButtonPosition);
-    // ±³°ü°´Å¥
+    // èƒŒåŒ…æŒ‰é’®
     std::pair<int, int> knapsackButtonPosition = { startButtonPosition.first, startButtonPosition.second + startButtonBackground.height() + buttonYOffset };
     btnKnapsack = new ClickButton(this);
     btnKnapsack->setButtonPixmap(knapsackButtonBackground);
     btnKnapsack->setButtonPosition(knapsackButtonPosition);
-    // ÉèÖÃ°´Å¥
+    // è®¾ç½®æŒ‰é’®
     std::pair<int, int> setButtonPosition = { startButtonPosition.first, knapsackButtonPosition.second + startButtonBackground.height() + buttonYOffset };
     btnSet = new ClickButton(this);
     btnSet->setButtonPixmap(setButtonBackground);
     btnSet->setButtonPosition(setButtonPosition);
-    // ÍË³ö°´Å¥
+    // é€€å‡ºæŒ‰é’®
     std::pair<int, int> exitButtonPosition = { startButtonPosition.first, setButtonPosition.second + startButtonBackground.height() + buttonYOffset };
     btnExit = new ClickButton(this);
     btnExit->setButtonPixmap(exitButtonBackground);

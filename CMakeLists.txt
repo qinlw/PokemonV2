@@ -23,14 +23,17 @@ set(SOURCES
  "PokemonV2Code/Sources/UI/Resource/picture.cpp" 
  "PokemonV2Code/Sources/UI/Resource/resourceStringName.cpp" 
  "PokemonV2Code/Sources/UI/Button/buttonBase.cpp" 
- "PokemonV2Code/Sources/UI/Button/clickButton.cpp")
+ "PokemonV2Code/Sources/UI/Button/clickButton.cpp" 
+ "PokemonV2Code/Sources/Core/SceneManager/sceneManager.cpp")
 set(HEADERS
  "PokemonV2Code/Headers/UI/Scene/sceneBase.h"
  "PokemonV2Code/Headers/UI/Scene/sceneMenu.h" 
  "PokemonV2Code/Headers/UI/Resource/picture.h" 
  "PokemonV2Code/Headers/UI/Resource/resourceStringName.h" 
  "PokemonV2Code/Headers/UI/Button/buttonBase.h" 
- "PokemonV2Code/Headers/UI/Button/clickButton.h")
+ "PokemonV2Code/Headers/UI/Button/clickButton.h" 
+ "PokemonV2Code/Headers/Core/SceneManager/sceneRegistry.h" 
+ "PokemonV2Code/Headers/Core/SceneManager/sceneManager.h")
 set(UIS
 )
 set(RESOURCES
@@ -45,7 +48,8 @@ add_executable(${PROJECT_NAME}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
-    ${CMAKE_CURRENT_SOURCE_DIR}/PokemonV2Code/Headers/UI  
+    ${CMAKE_CURRENT_SOURCE_DIR}/PokemonV2Code/Headers/UI 
+    ${CMAKE_CURRENT_SOURCE_DIR}/PokemonV2Code/Headers/Core  
 )
 
 if(MSVC)

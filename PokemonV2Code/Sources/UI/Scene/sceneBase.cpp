@@ -1,9 +1,11 @@
 #include "Scene/sceneBase.h"
 
 
+int SceneBase::sceneWidth = 1270;
+int SceneBase::sceneHeight = 720;
+
 SceneBase::SceneBase(QWidget* parent) : QWidget(parent)
 {
-    sceneWidth = 1280, sceneHeight = 720;
     globalPicture = Picture::getInstance();
     globalString = ResourceStringName::getInstance();
 
@@ -11,9 +13,8 @@ SceneBase::SceneBase(QWidget* parent) : QWidget(parent)
     resize(sceneWidth, sceneHeight);
 }
 
-SceneBase::~SceneBase() 
+SceneBase::~SceneBase()
 {
-
 }
 
 void SceneBase::showEvent(QShowEvent* event)
