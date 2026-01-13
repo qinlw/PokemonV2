@@ -1,9 +1,8 @@
 #include "Button/clickButton.h"
 
 
-ClickButton::ClickButton(QWidget* parent) : ButtonBase(parent), pressOffset(5), pressSleep({50, 300})
+ClickButton::ClickButton(QWidget* parent) : ButtonBase(parent), isPressed(false), pressOffset(5), pressSleep({50, 300})
 {
-	connect(this, &QPushButton::pressed, this, &ClickButton::buttonSink);
 }
 
 void ClickButton::setPressOffsetAndPressSleep(int offset, std::pair<int, int> sleep)
@@ -12,11 +11,30 @@ void ClickButton::setPressOffsetAndPressSleep(int offset, std::pair<int, int> sl
 	pressSleep = sleep;
 }
 
+void ClickButton::mousePressEvent(QMouseEvent* event)
+{
+	isPressed = true;
+	buttonSink();
+	event->accept();
+}
+
+void ClickButton::mouseReleaseEvent(QMouseEvent* event)
+{
+	isPressed = false;
+	buttonBulge();
+	event->accept();
+}
+
+void ClickButton::mouseMoveEvent(QMouseEvent* event)
+{
+	event->accept();
+}
+
 void ClickButton::buttonSink()
 {
 	buttonPosition.second += pressOffset;
 	setButtonPosition(buttonPosition);
-	QTimer::singleShot(pressSleep.first, this, &ClickButton::buttonBulge);
+	QTimer::singleShot(pressSleep.first, this, []{});
 }
 
 void ClickButton::buttonBulge()
@@ -29,6 +47,5 @@ void ClickButton::buttonBulge()
 void ClickButton::buttonEvent()
 {
 	std::cerr << "fff" << std::endl;
-	qWarning() << "fgfgf";
 }
 
