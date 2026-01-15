@@ -1,9 +1,10 @@
 #pragma once
 
-#include <qpushbutton.h>
+#include <QPushButton>
 #include <qpixmap.h>
 #include <qpainter.h>
 #include <iostream>
+
 
 class ButtonBase : public QPushButton
 {

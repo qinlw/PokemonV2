@@ -1,8 +1,8 @@
 #pragma once
 
-#include <qtimer.h>
+#include <QTimer>
 #include <QMouseEvent>
-#include "Button/buttonBase.h"
+#include "UI/Button/buttonBase.h"
 
 
 class ClickButton : public ButtonBase

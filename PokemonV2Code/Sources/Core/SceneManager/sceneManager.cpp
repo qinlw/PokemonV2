@@ -1,6 +1,6 @@
 #pragma once
 
-#include "SceneManager/sceneManager.h"
+#include "Core/SceneManager/sceneManager.h"
 #include <QDebug>
 
 SceneManager::SceneManager(QStackedWidget* container, QObject* parent)

@@ -1,9 +1,9 @@
-﻿#include "Scene/sceneMenu.h"
-#include "SceneManager/sceneManager.h"
+﻿#include "UI/Scene/sceneMenu.h"
+#include "Core/SceneManager/sceneManager.h"
 
-#include <qapplication.h>
-#include <qmainwindow.h>
-#include <qstackedwidget.h>
+#include <QApplication>
+#include <QMainWindow>
+#include <QStackedWidget>
 
 
 int main(int argc, char* argv[])
