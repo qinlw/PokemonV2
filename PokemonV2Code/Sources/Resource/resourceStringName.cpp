@@ -3,7 +3,11 @@
 
 ResourceStringName::ResourceStringName()
 {
+	// scene
 	background = "background";
+	menuBackground = "menuBackground";
+	selectorBackground = "selectorBackground";
+	// button
 	startButtonBackground = "startButtonBackground";
 	knapsackButtonBackground = "knapsackButtonBackground";
 	setButtonBackground = "setButtonBackground";

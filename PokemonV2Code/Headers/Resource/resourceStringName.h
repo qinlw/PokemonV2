@@ -6,7 +6,11 @@
 class ResourceStringName
 {
 public:
+	// scene
 	QString background;
+	QString menuBackground;
+	QString selectorBackground;
+	// button	
 	QString startButtonBackground;
 	QString knapsackButtonBackground;
 	QString setButtonBackground;

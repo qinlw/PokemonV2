@@ -4,7 +4,9 @@
 Picture::Picture()
 {
 	// scene
-	loadPixmap("background", ":/Scene/menu_background");
+	loadPixmap("background", ":/Scene/background_base");
+	loadPixmap("menuBackground", ":/Scene/menu_background");
+	loadPixmap("selectorBackground", ":/Scene/selector_background");
 
 	// button
 	loadPixmap("startButtonBackground", ":/Button/start_button");
