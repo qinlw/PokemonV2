@@ -18,19 +18,19 @@ public:
     SceneManager(const SceneManager&) = delete;
     SceneManager& operator=(const SceneManager&) = delete;
 
-    bool switchScene(const QString& sceneId, const QVariantMap& params = {});
+    bool switchScene(const QString& sceneName, const QVariantMap& params = {});
 
     SceneBase* getCurrentScene() const { return currentScene; }
-
-signals:
-    void sceneSwitched(const QString& fromId, const QString& toId);
 
 private:
     explicit SceneManager(QStackedWidget* container, QObject* parent = nullptr);
 
-    SceneBase* createScene(const QString& sceneId);
+    SceneBase* createScene(const QString& sceneName);
 
     QStackedWidget* container;
     QHash<QString, SceneBase*> sceneCache;
     SceneBase* currentScene = nullptr;
+
+signals:
+    void sceneSwitched(const QString& fromId, const QString& toId);
 };

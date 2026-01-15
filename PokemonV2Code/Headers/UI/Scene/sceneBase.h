@@ -18,7 +18,7 @@ class SceneRegistry;
 #define REGISTER_SCENE(SCENE_CLASS) \
     static bool _register_##SCENE_CLASS = []() { \
         SceneRegistry::instance()->registerSceneCreator( \
-            SCENE_CLASS::staticSceneId(), \
+            SCENE_CLASS::staticSceneName(), \
             []() -> SceneBase* { return new SCENE_CLASS(); } \
         ); \
         return true; \
@@ -39,7 +39,7 @@ protected:
 public:
 	explicit SceneBase(QWidget* parent = nullptr);
 	~SceneBase() override;
-	virtual QString sceneId() const = 0;
+	virtual QString getSceneName() const = 0;
 	virtual void onEnter(const QVariantMap& params = {}) {}
 	virtual void onExit() {}
 

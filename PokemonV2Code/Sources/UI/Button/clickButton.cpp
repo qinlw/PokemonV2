@@ -46,6 +46,12 @@ void ClickButton::buttonBulge()
 
 void ClickButton::buttonEvent()
 {
-	std::cerr << "fff" << std::endl;
+	if (buttonEventFun)
+		buttonEventFun();
+}
+
+void ClickButton::setButtonEventFun(std::function<void()>&& eventFun)
+{
+	buttonEventFun = std::forward<std::function<void()>>(eventFun);
 }
 

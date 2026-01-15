@@ -1,4 +1,4 @@
-#pragma once
+ï»¿#pragma once
 
 #include "Core/SceneManager/sceneManager.h"
 #include <QDebug>
@@ -8,45 +8,45 @@ SceneManager::SceneManager(QStackedWidget* container, QObject* parent)
 {
 }
 
-SceneBase* SceneManager::createScene(const QString& sceneId)
+SceneBase* SceneManager::createScene(const QString& sceneName)
 {
-    if (sceneCache.contains(sceneId)) {
-        return sceneCache[sceneId];
+    if (sceneCache.contains(sceneName)) {
+        return sceneCache[sceneName];
     }
 
-    SceneCreator creator = SceneRegistry::instance()->getSceneCreator(sceneId);
+    SceneCreator creator = SceneRegistry::instance()->getSceneCreator(sceneName);
     if (!creator) {
-        qWarning() << "[SceneManager] is unregistered£º" << sceneId;
+        qWarning() << "[SceneManager] is unregisteredï¼š" << sceneName;
         return nullptr;
     }
 
     SceneBase* scene = creator();
     if (!scene) {
-        qWarning() << "[SceneManager] creation failed£º" << sceneId;
+        qWarning() << "[SceneManager] creation failedï¼š" << sceneName;
         return nullptr;
     }
 
     connect(scene, &SceneBase::requestSwitchScene, this, &SceneManager::switchScene);
 
     container->addWidget(scene);
-    sceneCache[sceneId] = scene;
+    sceneCache[sceneName] = scene;
 
     return scene;
 }
 
-bool SceneManager::switchScene(const QString& sceneId, const QVariantMap& params)
+bool SceneManager::switchScene(const QString& sceneName, const QVariantMap& params)
 {
     if (!container) {
         qWarning() << "[SceneManager] hasn't been initialized";
         return false;
     }
 
-    QString fromId = currentScene ? currentScene->sceneId() : "None";
+    QString fromId = currentScene ? currentScene->getSceneName() : "None";
     if (currentScene) {
         currentScene->onExit();
     }
 
-    SceneBase* targetScene = createScene(sceneId);
+    SceneBase* targetScene = createScene(sceneName);
     if (!targetScene) {
         return false;
     }
@@ -55,6 +55,6 @@ bool SceneManager::switchScene(const QString& sceneId, const QVariantMap& params
     targetScene->onEnter(params);
 
     currentScene = targetScene;
-    emit sceneSwitched(fromId, sceneId);
-    qInfo() << "[SceneManager] switch scene£º" << fromId << " -> " << sceneId;
+    emit sceneSwitched(fromId, sceneName);
+    qInfo() << "[SceneManager] switch sceneï¼š" << fromId << " -> " << sceneName;
 }

@@ -9,6 +9,7 @@ SceneBase::SceneBase(QWidget* parent) : QWidget(parent)
     globalPicture = Picture::getInstance();
     globalString = ResourceStringName::getInstance();
 
+    setAutoFillBackground(true);
     setWindowTitle("Pokemon");
     resize(sceneWidth, sceneHeight);
 }

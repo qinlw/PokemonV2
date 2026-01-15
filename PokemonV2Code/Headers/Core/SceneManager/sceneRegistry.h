@@ -15,15 +15,16 @@ public:
         return &inst;
     }
 
-    void registerSceneCreator(const QString& sceneId, const SceneCreator& creator) {
-        creators[sceneId] = creator;
+    void registerSceneCreator(const QString& sceneName, const SceneCreator& creator) {
+        creators[sceneName] = creator;
     }
 
-    SceneCreator getSceneCreator(const QString& sceneId) {
-        return creators.value(sceneId, nullptr);
+    SceneCreator getSceneCreator(const QString& sceneName) {
+        return creators.value(sceneName, static_cast<SceneCreator>(nullptr));
     }
 
 private:
     SceneRegistry() = default;
     QHash<QString, SceneCreator> creators;
+
 };

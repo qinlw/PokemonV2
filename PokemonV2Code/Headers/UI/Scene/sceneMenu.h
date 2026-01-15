@@ -3,12 +3,16 @@
 
 class SceneMenu : public SceneBase
 {
-protected:
+	Q_OBJECT
+public:
+	// 场景名
+	static QString sceneName;
+private:
 	// 按钮偏移量
 	int buttonXOffset;
 	int buttonYOffset;
 	// 背景
-	QPixmap background;
+	QPixmap menuBackground;
 	// 开始按钮
 	QPixmap startButtonBackground;
 	ClickButton* btnStart;
@@ -22,11 +26,10 @@ protected:
 	QPixmap exitButtonBackground;
 	ClickButton* btnExit;
 
-	Q_OBJECT
 public:
 	explicit SceneMenu(QWidget* parent = nullptr);
 	~SceneMenu() override;
-	QString sceneId() const override { return "SceneMenu"; }
-	static QString staticSceneId() { return "MenuScene"; }
+	QString getSceneName() const override { return sceneName; }
+	static QString staticSceneName() { return sceneName; }
 
 };

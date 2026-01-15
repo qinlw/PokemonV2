@@ -1,10 +1,17 @@
 ﻿#include "UI/Scene/sceneMenu.h"
+#include "UI/Scene/sceneSelector.h"
 #include "Core/SceneManager/sceneManager.h"
 
 #include <QApplication>
 #include <QMainWindow>
 #include <QStackedWidget>
 
+
+void registerSceneAll()
+{
+    REGISTER_SCENE(SceneMenu);
+    REGISTER_SCENE(SceneSelector);
+}
 
 int main(int argc, char* argv[])
 {
@@ -16,11 +23,11 @@ int main(int argc, char* argv[])
     mainWindow.setCentralWidget(sceneContainer);
     mainWindow.resize(SceneBase::sceneWidth, SceneBase::sceneHeight);
     // 注册场景
-    REGISTER_SCENE(SceneMenu);
+    registerSceneAll();
     // 初始化场景管理器
     SceneManager& sceneMgr = SceneManager::instance(sceneContainer);
     // 切换到第一场景
-    sceneMgr.switchScene("MenuScene");
+    sceneMgr.switchScene(SceneMenu::sceneName);
 
     mainWindow.show();
 
