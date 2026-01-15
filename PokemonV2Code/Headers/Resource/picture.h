@@ -2,7 +2,7 @@
 
 #include <qpixmap.h>
 #include <qpalette.h>
-#include <qdebug.h>
+#include <QDebug>
 #include "resourceStringName.h"
 
 

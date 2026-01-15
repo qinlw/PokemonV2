@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Scene/sceneBase.h"
-#include <QMap>
+#include <QHash>
 #include <functional>
+#include "UI/Scene/sceneBase.h"
 
 
 using SceneCreator = std::function<SceneBase* ()>;
@@ -16,14 +16,14 @@ public:
     }
 
     void registerSceneCreator(const QString& sceneId, const SceneCreator& creator) {
-        m_creators[sceneId] = creator;
+        creators[sceneId] = creator;
     }
 
     SceneCreator getSceneCreator(const QString& sceneId) {
-        return m_creators.value(sceneId, nullptr);
+        return creators.value(sceneId, nullptr);
     }
 
 private:
     SceneRegistry() = default;
-    QMap<QString, SceneCreator> m_creators;
+    QHash<QString, SceneCreator> creators;
 };

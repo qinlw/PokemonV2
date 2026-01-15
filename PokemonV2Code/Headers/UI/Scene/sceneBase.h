@@ -1,12 +1,12 @@
 #pragma once
 
-#include <qwidget.h>
+#include <QWidget>
 #include <qbuffer.h>
-#include <qpushbutton.h>  
-#include <qstring.h>
+#include <QPushButton>  
+#include <QString>
 #include <qvariantmap.h>
 #include "Resource/picture.h"
-#include "Button/clickButton.h"
+#include "UI/Button/clickButton.h"
 
 #ifdef _WIN32 
 #include <windows.h>  

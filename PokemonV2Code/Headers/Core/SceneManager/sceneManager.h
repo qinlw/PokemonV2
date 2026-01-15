@@ -1,9 +1,10 @@
 #pragma once 
 
-#include "SceneManager/sceneRegistry.h"
 #include <QStackedWidget>
-#include <QMap>
+#include <QHash>
 #include <QObject>
+#include "Core/SceneManager/sceneRegistry.h"
+
 
 class SceneManager : public QObject
 {
@@ -30,6 +31,6 @@ private:
     SceneBase* createScene(const QString& sceneId);
 
     QStackedWidget* container;
-    QMap<QString, SceneBase*> sceneCache;
+    QHash<QString, SceneBase*> sceneCache;
     SceneBase* currentScene = nullptr;
 };
