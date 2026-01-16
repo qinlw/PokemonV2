@@ -1,14 +1,14 @@
-#include "UI/Scene/sceneSelector.h"
+ï»¿#include "UI/Scene/sceneSelector.h"
 
 
 QString SceneSelector::sceneName = "SceneSelector";
 
 SceneSelector::SceneSelector(QWidget* parent) : SceneBase(parent)
 {
-	// ³õÊ¼»¯QPixmap
+	// åˆå§‹åŒ–QPixmap
 	selectorBaseground = globalPicture->getPixmap(globalString->selectorBackground);
 
-	// ´°¿Ú±³¾°
+	// çª—å£èƒŒæ™¯
 	QPalette paletteWindow;
 	paletteWindow.setBrush(QPalette::Window, QBrush(selectorBaseground));
 	setPalette(paletteWindow);

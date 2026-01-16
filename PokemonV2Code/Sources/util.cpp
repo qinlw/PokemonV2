@@ -1,20 +1,20 @@
-#include "util.h"
+ï»¿#include "util.h"
 
-// ×ª»»ÊµÀı£º ":/Button/start_button" -> "startButton"
+// è½¬æ¢å®ä¾‹ï¼š ":/Button/start_button" -> "startButton"
 QString Util::pathToLowerCamelCase(QString resourcePath)
 {
-	// ÌáÈ¡×ÊÔ´±ğÃû
-	// ËÑË÷±ğÃûµÄÆğÊ¼Ë÷Òı
+	// æå–èµ„æºåˆ«å
+	// æœç´¢åˆ«åçš„èµ·å§‹ç´¢å¼•
 	int aliasStartIdx = resourcePath.size() - 1;
 	for (; aliasStartIdx >= 0; --aliasStartIdx)
 	{
 		if (resourcePath[aliasStartIdx] == '/')
 			break;
 	}
-	// ½ØÈ¡
+	// æˆªå–
 	resourcePath = resourcePath.mid(aliasStartIdx + 1);
 
-	// ×ª»»³ÉĞ¡ÍÕ·å
+	// è½¬æ¢æˆå°é©¼å³°
 	bool needCapital = false;
 	int resourcePathSize = resourcePath.size();
 	QString retString;

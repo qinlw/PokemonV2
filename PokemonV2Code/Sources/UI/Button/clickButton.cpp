@@ -1,4 +1,4 @@
-#include "UI/Button/clickButton.h"
+﻿#include "UI/Button/clickButton.h"
 
 
 ClickButton::ClickButton(QWidget* parent) : ButtonBase(parent), isPressed(false), pressOffset(5), pressSleep({50, 300})
