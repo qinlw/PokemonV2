@@ -14,16 +14,16 @@ private:
 	// 背景
 	QPixmap menuBackground;
 	// 开始按钮
-	QPixmap startButtonBackground;
+	QPixmap startButton;
 	ClickButton* btnStart;
 	// 背包按钮
-	QPixmap knapsackButtonBackground;
+	QPixmap knapsackButton;
 	ClickButton* btnKnapsack;
 	// 设置按钮
-	QPixmap setButtonBackground;
+	QPixmap setButton;
 	ClickButton* btnSet;
 	// 退出按钮
-	QPixmap exitButtonBackground;
+	QPixmap exitButton;
 	ClickButton* btnExit;
 
 public:

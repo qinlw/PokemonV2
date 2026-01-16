@@ -1,18 +1,27 @@
-#include "Resource/picture.h"
+﻿#include "Resource/picture.h"
+#include "util.h"
 
 
 Picture::Picture()
 {
 	// scene
-	loadPixmap("background", ":/Scene/background_base");
-	loadPixmap("menuBackground", ":/Scene/menu_background");
-	loadPixmap("selectorBackground", ":/Scene/selector_background");
+	loadPixmap(":/Scene/background_base");
+	loadPixmap(":/Scene/menu_background");
+	loadPixmap(":/Scene/selector_background");
 
 	// button
-	loadPixmap("startButtonBackground", ":/Button/start_button");
-	loadPixmap("knapsackButtonBackground", ":/Button/knapsack_button");
-	loadPixmap("setButtonBackground", ":/Button/set_button");
-	loadPixmap("exitButtonBackground", ":/Button/exit_button");
+	loadPixmap(":/Button/start_button");
+	loadPixmap(":/Button/knapsack_button");
+	loadPixmap(":/Button/set_button");
+	loadPixmap(":/Button/exit_button");
+	
+	// sceneSelector
+	loadPixmap(":/Scene/SceneSelector/pokeball");
+
+	// pokemon
+	loadPixmapList(":/Pokemon/selector_bulbasaur_%1", 2);
+	loadPixmapList(":/Pokemon/selector_charmander_%1", 2);
+	loadPixmapList(":/Pokemon/selector_squirtle_%1", 2);
 }
 
 Picture* Picture::getInstance()
@@ -35,6 +44,12 @@ void Picture::loadPixmap(const QString& pixmapName, const QString& picturePath)
 	}
 }
 
+void Picture::loadPixmap(const QString& picturePath)
+{
+	QString pixmapName = Util::pathToLowerCamelCase(picturePath);
+	loadPixmap(pixmapName, picturePath);
+}
+
 QPixmap Picture::getPixmap(const QString& pixmapName)
 {
 	if (pixmapHash.find(pixmapName) != pixmapHash.end())
@@ -43,4 +58,23 @@ QPixmap Picture::getPixmap(const QString& pixmapName)
 		qWarning() << QString("pixmap get fail: name: %1").arg(pixmapName);
 
 	return QPixmap();
+}
+
+void Picture::loadPixmapList(const QString& picturePathTemplate, int pictureNum)
+{
+	for (int i = 0; i < pictureNum; ++i)
+	{
+		QString picturePath = picturePathTemplate.arg(i + 1);
+		QString pixmapName = Util::pathToLowerCamelCase(picturePath);
+		QPixmap pixmap(picturePath);
+		if (pixmap.isNull())
+		{
+			qWarning() << QString("pixmap load fail: name: %1, path: %2").arg(pixmapName).arg(picturePath);
+		}
+		else
+		{
+			pixmapHash.insert(pixmapName, pixmap);
+			pathHash.insert(pixmapName, picturePath);
+		}
+	}
 }

@@ -10,4 +10,15 @@
         <file alias="set_button">ResFiles/Button/set_button.png</file>
         <file alias="exit_button">ResFiles/Button/exit_button.png</file>
     </qresource>
+    <qresource prefix="/Scene/SceneSelector">
+        <file alias="pokeball">ResFiles/Scene/SceneMenu/pokeball.png</file>
+    </qresource>
+    <qresource prefix="/Pokemon">
+        <file alias="selector_bulbasaur_1">ResFiles/Pokemon/selector_bulbasaur_1.png</file>
+        <file alias="selector_bulbasaur_2">ResFiles/Pokemon/selector_bulbasaur_2.png</file>
+        <file alias="selector_charmander_1">ResFiles/Pokemon/selector_charmander_1.png</file>
+        <file alias="selector_charmander_2">ResFiles/Pokemon/selector_charmander_2.png</file>
+        <file alias="selector_squirtle_1">ResFiles/Pokemon/selector_squirtle_1.png</file>
+        <file alias="selector_squirtle_2">ResFiles/Pokemon/selector_squirtle_2.png</file>
+    </qresource>
 </RCC>

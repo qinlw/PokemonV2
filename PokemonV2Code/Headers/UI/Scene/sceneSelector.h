@@ -1,13 +1,13 @@
-#include "Ui/Scene/sceneBase.h"
+ï»¿#include "Ui/Scene/sceneBase.h"
 
 
 class SceneSelector : public SceneBase {
 	Q_OBJECT
 public:
-	// ³¡¾°Ãû
+	// åœºæ™¯å
 	static QString sceneName;
 private:
-	// ±³¾°
+	// èƒŒæ™¯
 	QPixmap selectorBaseground;
 
 public:

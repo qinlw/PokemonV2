@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <QString>
 
@@ -7,19 +7,26 @@ class ResourceStringName
 {
 public:
 	// scene
-	QString background;
+	QString backgroundBase;
 	QString menuBackground;
 	QString selectorBackground;
 	// button	
-	QString startButtonBackground;
-	QString knapsackButtonBackground;
-	QString setButtonBackground;
-	QString exitButtonBackground;
+	QString startButton;
+	QString knapsackButton;
+	QString setButton;
+	QString exitButton;
+	// SceneSelector
+	QString pokeball;
+	// Pokemon
+	std::vector<QString> Bulbasaur;
+	std::vector<QString> Charmander;
+	std::vector<QString> Squirtle;
 
 public:
 	ResourceStringName(const ResourceStringName& obj) = delete;
 	ResourceStringName& operator=(const ResourceStringName& obj) = delete;
 	static ResourceStringName* getInstance();
+	void loadStringList(std::vector<QString>& stringList, const QString& picturePathTemplate, int pictureNum);
 
 private:
 	ResourceStringName();

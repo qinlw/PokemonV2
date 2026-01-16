@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 
 #include <qpixmap.h>
 #include <qpalette.h>
@@ -17,7 +17,9 @@ public:
 	Picture& operator=(const Picture& obj) = delete;
 	static Picture* getInstance();
 	void loadPixmap(const QString& pixmapName, const QString& picturePath);
+	void loadPixmap(const QString& picturePath);
 	QPixmap getPixmap(const QString& pixmapName);
+	void loadPixmapList(const QString& picturePathTemplate, int pictureNum);
 
 private:
 	Picture();
