@@ -1,4 +1,4 @@
-#include "UI/Scene/sceneBase.h"
+﻿#include "UI/Scene/sceneBase.h"
 
 
 int SceneBase::sceneWidth = 1270;

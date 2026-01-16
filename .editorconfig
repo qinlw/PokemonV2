@@ -1,0 +1,8 @@
+﻿root = true              # 所在目录是项目根目录，此目录及子目录下保存的文件都会生效
+
+[*]                      # 对于所有文件
+indent_style = tab       # 缩进风格为 Tab
+tab_width = 4            # 缩进宽度为 4 个字符
+charset = utf-8-bom      # 文件编码格式（和你图片里的「Unicode (UTF-8 带签名)」完全对应）
+end_of_line = crlf       # 行尾格式（Windows 系统默认）
+insert_final_newline = true  # 文件结尾自动添加换行符
