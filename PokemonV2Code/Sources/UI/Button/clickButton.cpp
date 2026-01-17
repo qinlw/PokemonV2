@@ -21,7 +21,8 @@ void ClickButton::mousePressEvent(QMouseEvent* event)
 void ClickButton::mouseReleaseEvent(QMouseEvent* event)
 {
 	isPressed = false;
-	buttonBulge();
+	QPoint releasePos = event->pos();
+	buttonBulge(releasePos);
 	event->accept();
 }
 
@@ -37,11 +38,14 @@ void ClickButton::buttonSink()
 	QTimer::singleShot(pressSleep.first, this, []{});
 }
 
-void ClickButton::buttonBulge()
+void ClickButton::buttonBulge(QPoint releasePos)
 {
 	buttonPosition.second -= pressOffset;
 	setButtonPosition(buttonPosition);
-	QTimer::singleShot(pressSleep.second, this, &ClickButton::buttonEvent);
+	if (rect().contains(releasePos))
+		QTimer::singleShot(pressSleep.second, this, &ClickButton::buttonEvent);
+	else
+		QTimer::singleShot(pressSleep.second, this, []{});
 }
 
 void ClickButton::buttonEvent()

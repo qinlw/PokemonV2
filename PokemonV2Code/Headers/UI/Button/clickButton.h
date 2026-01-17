@@ -27,7 +27,7 @@ protected:
 
 private:
 	void buttonSink();
-	void buttonBulge();
+	void buttonBulge(QPoint releasePos);
 	void buttonEvent();
 
 };
