@@ -5,23 +5,23 @@
 ResourceStringName::ResourceStringName()
 {
 	// scene
-	backgroundBase = "backgroundBase";
-	menuBackground = "menuBackground";
-	selectorBackground = "selectorBackground";
+	backgroundBase = Util::pathToLowerCamelCase(":/Scene/background_base");
+	menuBackground = Util::pathToLowerCamelCase(":/Scene/menu_background");
+	selectorBackground = Util::pathToLowerCamelCase(":/Scene/selector_background");
 
 	// button
-	startButton = "startButton";
-	knapsackButton = "knapsackButton";
-	setButton = "setButton";
-	exitButton = "exitButton";
+	startButton = Util::pathToLowerCamelCase(":/Button/start_button");
+	knapsackButton = Util::pathToLowerCamelCase(":/Button/knapsack_button");
+	setButton = Util::pathToLowerCamelCase(":/Button/set_button");
+	exitButton = Util::pathToLowerCamelCase(":/Button/exit_button");
 
 	// sceneSelector
-	pokeball = "pokeball";
+	pokeball = Util::pathToLowerCamelCase(":/Scene/SceneSelector/pokeball");
 
 	// pokemon
-	loadStringList(Bulbasaur, ":/Pokemon/selector_bulbasaur_%1", 2);
-	loadStringList(Charmander, ":/Pokemon/selector_charmander_%1", 2);
-	loadStringList(Squirtle, ":/Pokemon/selector_squirtle_%1", 2);
+	loadStringList(selectorBulbasaur, ":/Pokemon/selector_bulbasaur_%1", 2);
+	loadStringList(selectorCharmander, ":/Pokemon/selector_charmander_%1", 2);
+	loadStringList(selectorSquirtle, ":/Pokemon/selector_squirtle_%1", 2);
 }
 
 ResourceStringName* ResourceStringName::getInstance()

@@ -22,24 +22,26 @@ set(SOURCES
   
  "PokemonV2Code/Sources/Resource/picture.cpp" 
  "PokemonV2Code/Sources/Resource/resourceStringName.cpp" 
+ "PokemonV2Code/Sources/UI/Button/buttonBase.cpp" 
+ "PokemonV2Code/Sources/UI/Button/clickButton.cpp" 
+ "PokemonV2Code/Sources/UI/Pokemon/pokemonBase.cpp"
  "PokemonV2Code/Sources/UI/Scene/sceneBase.cpp"
  "PokemonV2Code/Sources/UI/Scene/sceneMenu.cpp"
  "PokemonV2Code/Sources/UI/Scene/sceneSelector.cpp" 
- "PokemonV2Code/Sources/UI/Button/buttonBase.cpp" 
- "PokemonV2Code/Sources/UI/Button/clickButton.cpp" 
- "PokemonV2Code/Sources/util.cpp")
+ "PokemonV2Code/Sources/util.cpp" )
 set(HEADERS
  "PokemonV2Code/Headers/Core/SceneManager/sceneRegistry.h" 
  "PokemonV2Code/Headers/Core/SceneManager/sceneManager.h" 
   
  "PokemonV2Code/Headers/Resource/picture.h" 
  "PokemonV2Code/Headers/Resource/resourceStringName.h" 
- "PokemonV2Code/Headers/UI/Scene/sceneBase.h"
- "PokemonV2Code/Headers/UI/Scene/sceneMenu.h" 
  "PokemonV2Code/Headers/UI/Button/buttonBase.h" 
  "PokemonV2Code/Headers/UI/Button/clickButton.h" 
+ "PokemonV2Code/Headers/UI/Pokemon/pokemonBase.h"
+ "PokemonV2Code/Headers/UI/Scene/sceneBase.h"
+ "PokemonV2Code/Headers/UI/Scene/sceneMenu.h" 
  "PokemonV2Code/Headers/UI/Scene/sceneSelector.h" 
- "PokemonV2Code/Headers/util.h")
+ "PokemonV2Code/Headers/util.h" )
 set(UIS
 )
 set(RESOURCES

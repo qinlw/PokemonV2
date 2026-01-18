@@ -18,9 +18,9 @@ public:
 	// SceneSelector
 	QString pokeball;
 	// Pokemon
-	std::vector<QString> Bulbasaur;
-	std::vector<QString> Charmander;
-	std::vector<QString> Squirtle;
+	std::vector<QString> selectorBulbasaur;
+	std::vector<QString> selectorCharmander;
+	std::vector<QString> selectorSquirtle;
 
 public:
 	ResourceStringName(const ResourceStringName& obj) = delete;
