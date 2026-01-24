@@ -16,6 +16,7 @@ Picture::Picture()
 	loadPixmap(":/Button/exit_button");
 	
 	// sceneSelector
+	loadPixmap(":/Scene/SceneSelector/return_button");
 	loadPixmap(":/Scene/SceneSelector/pokeball");
 
 	// pokemon
