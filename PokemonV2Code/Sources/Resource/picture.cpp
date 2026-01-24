@@ -1,4 +1,5 @@
-﻿#include "Resource/picture.h"
+﻿#include <QDebug>
+#include "Resource/picture.h"
 #include "util.h"
 
 
@@ -23,6 +24,12 @@ Picture::Picture()
 	loadPixmapList(":/Pokemon/selector_bulbasaur_%1", 2);
 	loadPixmapList(":/Pokemon/selector_charmander_%1", 2);
 	loadPixmapList(":/Pokemon/selector_squirtle_%1", 2);
+	loadPixmapList(":/Pokemon/bulbasaur_%1", 2);
+	loadPixmapList(":/Pokemon/charmander_%1", 2);
+	loadPixmapList(":/Pokemon/squirtle_%1", 2);
+	loadPixmap(":/Pokemon/bulbasaur_head_portrait_right");
+	loadPixmap(":/Pokemon/charmander_head_portrait_right");
+	loadPixmap(":/Pokemon/squirtle_head_portrait_right");
 }
 
 Picture* Picture::getInstance()
@@ -59,6 +66,17 @@ QPixmap Picture::getPixmap(const QString& pixmapName)
 		qWarning() << QString("pixmap get fail: name: %1").arg(pixmapName);
 
 	return QPixmap();
+}
+
+std::vector<QPixmap> Picture::getPixmapList(const std::pair<QString, int>& pictureStringList)
+{
+	std::vector<QPixmap> pixmapList;
+	for (int i = 0; i < pictureStringList.second; ++i)
+	{
+		QString pictureString = pictureStringList.first.arg(i);
+		QPixmap pixmap = pixmapHash[pictureString];
+		pixmapList.push_back(pixmap);
+	}
 }
 
 void Picture::loadPixmapList(const QString& picturePathTemplate, int pictureNum)

@@ -19,15 +19,21 @@ public:
 	QString returnButton;
 	QString pokeball;
 	// Pokemon
-	std::vector<QString> selectorBulbasaur;
-	std::vector<QString> selectorCharmander;
-	std::vector<QString> selectorSquirtle;
+	std::pair<QString, int> selectorBulbasaur;
+	std::pair<QString, int> selectorCharmander;
+	std::pair<QString, int> selectorSquirtle;
+	std::pair<QString, int> bulbasaur;
+	std::pair<QString, int> charmander;
+	std::pair<QString, int> squirtle;
+	QString bulbasaurHeadPortraitRight;
+	QString charmanderHeadPortraitRight;
+	QString squirtleHeadPortraitRight;
 
 public:
 	ResourceStringName(const ResourceStringName& obj) = delete;
 	ResourceStringName& operator=(const ResourceStringName& obj) = delete;
 	static ResourceStringName* getInstance();
-	void loadStringList(std::vector<QString>& stringList, const QString& picturePathTemplate, int pictureNum);
+	void loadStringList(std::pair<QString, int>& pictureStringList, const QString& picturePathTemplate, int pictureNum);
 
 private:
 	ResourceStringName();

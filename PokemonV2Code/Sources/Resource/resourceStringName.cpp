@@ -23,6 +23,12 @@ ResourceStringName::ResourceStringName()
 	loadStringList(selectorBulbasaur, ":/Pokemon/selector_bulbasaur_%1", 2);
 	loadStringList(selectorCharmander, ":/Pokemon/selector_charmander_%1", 2);
 	loadStringList(selectorSquirtle, ":/Pokemon/selector_squirtle_%1", 2);
+	loadStringList(bulbasaur, ":/Pokemon/bulbasaur_%1", 2);
+	loadStringList(charmander, ":/Pokemon/charmander_%1", 2);
+	loadStringList(squirtle, ":/Pokemon/squirtle_%1", 2);
+	bulbasaurHeadPortraitRight = Util::pathToLowerCamelCase(":/Pokemon/bulbasaur_head_portrait_right");
+	charmanderHeadPortraitRight = Util::pathToLowerCamelCase(":/Pokemon/charmander_head_portrait_right");
+	squirtleHeadPortraitRight = Util::pathToLowerCamelCase(":/Pokemon/squirtle_head_portrait_right");
 }
 
 ResourceStringName* ResourceStringName::getInstance()
@@ -31,12 +37,8 @@ ResourceStringName* ResourceStringName::getInstance()
 	return &globalString;
 }
 
-void ResourceStringName::loadStringList(std::vector<QString>& stringList, const QString& picturePathTemplate, int pictureNum)
+void ResourceStringName::loadStringList(std::pair<QString, int>& pictureStringList, const QString& picturePathTemplate, int pictureNum)
 {
-	for (int i = 0; i < pictureNum; ++i)
-	{
-		QString picturePath = picturePathTemplate.arg(i + 1);
-		QString pixmapName = Util::pathToLowerCamelCase(picturePath);
-		stringList.emplace_back(pixmapName);
-	}
+	pictureStringList.first = Util::pathToLowerCamelCase(picturePathTemplate);
+	pictureStringList.second = pictureNum;
 }

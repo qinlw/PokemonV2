@@ -19,6 +19,7 @@ public:
 	void loadPixmap(const QString& pixmapName, const QString& picturePath);
 	void loadPixmap(const QString& picturePath);
 	QPixmap getPixmap(const QString& pixmapName);
+	std::vector<QPixmap> getPixmapList(const std::pair<QString, int>& pictureStringList);
 	void loadPixmapList(const QString& picturePathTemplate, int pictureNum);
 
 private:
