@@ -16,6 +16,7 @@ ResourceStringName::ResourceStringName()
 	exitButton = Util::pathToLowerCamelCase(":/Button/exit_button");
 
 	// sceneSelector
+	returnButton = Util::pathToLowerCamelCase(":/Scene/SceneSelector/return_button");
 	pokeball = Util::pathToLowerCamelCase(":/Scene/SceneSelector/pokeball");
 
 	// pokemon

@@ -11,7 +11,8 @@
         <file alias="exit_button">ResFiles/Button/exit_button.png</file>
     </qresource>
     <qresource prefix="/Scene/SceneSelector">
-        <file alias="pokeball">ResFiles/Scene/SceneMenu/pokeball.png</file>
+        <file alias="return_button">ResFiles/Scene/SceneSelector/return_button.png</file>
+        <file alias="pokeball">ResFiles/Scene/SceneSelector/pokeball.png</file>
     </qresource>
     <qresource prefix="/Pokemon">
         <file alias="selector_bulbasaur_1">ResFiles/Pokemon/selector_bulbasaur_1.png</file>
@@ -20,5 +21,14 @@
         <file alias="selector_charmander_2">ResFiles/Pokemon/selector_charmander_2.png</file>
         <file alias="selector_squirtle_1">ResFiles/Pokemon/selector_squirtle_1.png</file>
         <file alias="selector_squirtle_2">ResFiles/Pokemon/selector_squirtle_2.png</file>
+        <file>ResFiles/Pokemon/bulbasaur_1.png</file>
+        <file>ResFiles/Pokemon/bulbasaur_2.png</file>
+        <file>ResFiles/Pokemon/bulbasaur_head_portrait_right.png</file>
+        <file>ResFiles/Pokemon/charmander_1.png</file>
+        <file>ResFiles/Pokemon/charmander_2.png</file>
+        <file>ResFiles/Pokemon/charmander_head_portrait_right.png</file>
+        <file>ResFiles/Pokemon/squirtle_1.png</file>
+        <file>ResFiles/Pokemon/squirtle_2.png</file>
+        <file>ResFiles/Pokemon/squirtle_head_portrait_right.png</file>
     </qresource>
 </RCC>

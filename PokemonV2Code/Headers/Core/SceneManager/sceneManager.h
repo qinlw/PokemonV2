@@ -18,7 +18,7 @@ public:
     SceneManager(const SceneManager&) = delete;
     SceneManager& operator=(const SceneManager&) = delete;
 
-    bool switchScene(const QString& sceneName, const QVariantMap& params = {});
+    void switchScene(const QString& sceneName, const QVariantMap& params = {});
 
     SceneBase* getCurrentScene() const { return currentScene; }
 

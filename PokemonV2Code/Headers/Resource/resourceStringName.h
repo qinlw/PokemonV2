@@ -16,6 +16,7 @@ public:
 	QString setButton;
 	QString exitButton;
 	// SceneSelector
+	QString returnButton;
 	QString pokeball;
 	// Pokemon
 	std::vector<QString> selectorBulbasaur;

@@ -1,7 +1,8 @@
 ﻿#pragma once
 
-#include "Core/SceneManager/sceneManager.h"
 #include <QDebug>
+#include "Core/SceneManager/sceneManager.h"
+
 
 SceneManager::SceneManager(QStackedWidget* container, QObject* parent)
     : QObject(parent), container(container)
@@ -34,11 +35,11 @@ SceneBase* SceneManager::createScene(const QString& sceneName)
     return scene;
 }
 
-bool SceneManager::switchScene(const QString& sceneName, const QVariantMap& params)
+void SceneManager::switchScene(const QString& sceneName, const QVariantMap& params)
 {
     if (!container) {
-        qWarning() << "[SceneManager] hasn't been initialized";
-        return false;
+        qWarning() << __FILE__ << ": " << __LINE__ << "[SceneManager] hasn't been initialized";
+		return;
     }
 
     QString fromId = currentScene ? currentScene->getSceneName() : "None";
@@ -48,7 +49,7 @@ bool SceneManager::switchScene(const QString& sceneName, const QVariantMap& para
 
     SceneBase* targetScene = createScene(sceneName);
     if (!targetScene) {
-        return false;
+		qWarning() << __FILE__ << ": " << __LINE__ << ": targetScene is nullptr";
     }
 
     container->setCurrentWidget(targetScene);

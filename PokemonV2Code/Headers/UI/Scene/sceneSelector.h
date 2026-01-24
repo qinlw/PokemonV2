@@ -9,6 +9,9 @@ public:
 private:
 	// 背景
 	QPixmap selectorBaseground;
+	// 返回按钮
+	QPixmap returnButton;
+	ClickButton* btnReturn;
 
 public:
 	explicit SceneSelector(QWidget* parent = nullptr);
