@@ -21,14 +21,14 @@
         <file alias="selector_charmander_2">ResFiles/Pokemon/selector_charmander_2.png</file>
         <file alias="selector_squirtle_1">ResFiles/Pokemon/selector_squirtle_1.png</file>
         <file alias="selector_squirtle_2">ResFiles/Pokemon/selector_squirtle_2.png</file>
-        <file>ResFiles/Pokemon/bulbasaur_1.png</file>
-        <file>ResFiles/Pokemon/bulbasaur_2.png</file>
-        <file>ResFiles/Pokemon/bulbasaur_head_portrait_right.png</file>
-        <file>ResFiles/Pokemon/charmander_1.png</file>
-        <file>ResFiles/Pokemon/charmander_2.png</file>
-        <file>ResFiles/Pokemon/charmander_head_portrait_right.png</file>
-        <file>ResFiles/Pokemon/squirtle_1.png</file>
-        <file>ResFiles/Pokemon/squirtle_2.png</file>
-        <file>ResFiles/Pokemon/squirtle_head_portrait_right.png</file>
+        <file alias="bulbasaur_1">ResFiles/Pokemon/bulbasaur_1.png</file>
+        <file alias="bulbasaur_2">ResFiles/Pokemon/bulbasaur_2.png</file>
+        <file alias="bulbasaur_head_portrait_right">ResFiles/Pokemon/bulbasaur_head_portrait_right.png</file>
+        <file alias="charmander_1">ResFiles/Pokemon/charmander_1.png</file>
+        <file alias="charmander_2">ResFiles/Pokemon/charmander_2.png</file>
+        <file alias="charmander_head_portrait_right">ResFiles/Pokemon/charmander_head_portrait_right.png</file>
+        <file alias="squirtle_1">ResFiles/Pokemon/squirtle_1.png</file>
+        <file alias="squirtle_2">ResFiles/Pokemon/squirtle_2.png</file>
+        <file alias="squirtle_head_portrait_right">ResFiles/Pokemon/squirtle_head_portrait_right.png</file>
     </qresource>
 </RCC>
