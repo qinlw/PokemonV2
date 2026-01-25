@@ -77,6 +77,8 @@ std::vector<QPixmap> Picture::getPixmapList(const std::pair<QString, int>& pictu
 		QPixmap pixmap = pixmapHash[pictureString];
 		pixmapList.push_back(pixmap);
 	}
+	
+	return pixmapList;
 }
 
 void Picture::loadPixmapList(const QString& picturePathTemplate, int pictureNum)

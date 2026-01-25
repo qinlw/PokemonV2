@@ -18,6 +18,7 @@ find_package(Qt6 REQUIRED COMPONENTS Core Widgets Gui)
 
 set(SOURCES
  "PokemonV2Code/main.cpp"
+ "PokemonV2Code/Sources/Core/PlayPokemon/playPokemon.cpp"
  "PokemonV2Code/Sources/Core/SceneManager/sceneManager.cpp" 
  "PokemonV2Code/Sources/Resource/picture.cpp" 
  "PokemonV2Code/Sources/Resource/resourceStringName.cpp" 
@@ -31,6 +32,7 @@ set(SOURCES
  "PokemonV2Code/Sources/util.cpp"  
  )
 set(HEADERS
+ "PokemonV2Code/Headers/Core/PlayPokemon/playPokemon.h"
  "PokemonV2Code/Headers/Core/SceneManager/sceneRegistry.h" 
  "PokemonV2Code/Headers/Core/SceneManager/sceneManager.h" 
  "PokemonV2Code/Headers/Resource/picture.h" 
