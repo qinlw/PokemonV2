@@ -1,15 +1,21 @@
-﻿#pragma once
+#pragma once
 
-#include <qpixmap.h>
-#include <qpalette.h>
 #include <QDebug>
+#include <QHash>
+#include <QImage>
+#include <QPixmap>
 #include "resourceStringName.h"
+
+#include <vector>
 
 
 class Picture
 {
 private:
-	QHash<QString, QPixmap>	pixmapHash;
+	// QPixmap is GUI-related and should be created/used in the GUI thread.
+	// We load resources as QImage in worker threads, and convert to QPixmap lazily in GUI thread.
+	QHash<QString, QImage>	imageHash;
+	QHash<QString, QPixmap>	pixmapCache;
 	QHash<QString, QString> pathHash;
 
 public:

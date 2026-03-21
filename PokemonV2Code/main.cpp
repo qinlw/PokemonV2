@@ -1,29 +1,16 @@
-﻿#include "Core/PlayPokemon/playPokemon.h"
+#include "Core/PlayPokemon/playPokemon.h"
 #include "Core/SceneManager/sceneManager.h"
 #include "UI/Scene/sceneMenu.h"
 #include "UI/Scene/sceneSelector.h"
 #include "util.h"
+#include "Resource/picture.h"
+#include "Resource/resourceStringName.h"
 #include <QApplication>
+#include <QDebug>
 #include <QMainWindow>
 #include <QStackedWidget>
 #include <QThread>
-
-
-static void loadResource()
-{
-	qDebug() << "Resource thread ID: " << QThread::currentThread();
-	Picture* globalPicture = Picture::getInstance();
-	ResourceStringName* globalString = ResourceStringName::getInstance();
-	qDebug() << "resource load finished";
-}
-
-static void coreThreadExec()
-{
-	qDebug() << "Core thread ID: " << QThread::currentThread();
-	// 初始化各个宝可梦
-	PokemonBulbasaur* globalBulbasaur1P = PokemonBulbasaur::getInstance1P();
-	PokemonBulbasaur* globalBulbasaur2P = PokemonBulbasaur::getInstance2P();
-}
+#include <QObject>
 
 void registerSceneAll()
 {
@@ -39,27 +26,37 @@ int main(int argc, char* argv[])
 	// 安装自定义日志处理器
 	qInstallMessageHandler(Util::customMessageHandler);
 
-	// 资源子线程
-	std::thread resThread(loadResource);
-	resThread.detach();
+	// 资源子线程：只做 QImage 加载（不要在子线程创建/使用 QPixmap）。
+	QThread* resourceThread = QThread::create([] {
+		qDebug() << "Resource thread ID: " << QThread::currentThread();
+		Picture* globalPicture = Picture::getInstance();
+		(void)globalPicture;
+		ResourceStringName* globalString = ResourceStringName::getInstance();
+		(void)globalString;
+		qDebug() << "resource load finished";
+	});
 
-	// 逻辑子线程
-	std::thread coreThread(coreThreadExec);
-	coreThread.detach();
+	QObject::connect(resourceThread, &QThread::finished, [] {
+		// 创建主窗口和场景容器（必须在 GUI 线程，且资源已就绪）
+		auto mainWindow = new QMainWindow();
+		auto* sceneContainer = new QStackedWidget(mainWindow);
+		mainWindow->setCentralWidget(sceneContainer);
+		mainWindow->resize(SceneBase::sceneWidth, SceneBase::sceneHeight);
 
-    // 创建主窗口和场景容器
-    QMainWindow mainWindow;
-    QStackedWidget* sceneContainer = new QStackedWidget(&mainWindow);
-    mainWindow.setCentralWidget(sceneContainer);
-    mainWindow.resize(SceneBase::sceneWidth, SceneBase::sceneHeight);
-    // 注册场景
-    registerSceneAll();  
-    // 初始化场景管理器
-    SceneManager& sceneMgr = SceneManager::instance(sceneContainer);
-    // 切换到第一场景
-    sceneMgr.switchScene(SceneMenu::sceneName);
+		// 注册场景
+		registerSceneAll();
 
-    mainWindow.show();
+		// 初始化场景管理器
+		SceneManager& sceneMgr = SceneManager::instance(sceneContainer);
 
-    return app.exec();
+		// 切换到第一场景
+		sceneMgr.switchScene(SceneMenu::sceneName);
+
+		mainWindow->show();
+	});
+
+	QObject::connect(resourceThread, &QThread::finished, resourceThread, &QObject::deleteLater);
+	resourceThread->start();
+
+	return app.exec();
 }

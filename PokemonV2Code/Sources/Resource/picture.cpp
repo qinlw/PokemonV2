@@ -1,4 +1,4 @@
-﻿#include <QDebug>
+#include <QDebug>
 #include "Resource/picture.h"
 #include "util.h"
 
@@ -40,14 +40,15 @@ Picture* Picture::getInstance()
 
 void Picture::loadPixmap(const QString& pixmapName, const QString& picturePath)
 {
-	QPixmap pixmap(picturePath);
-	if (pixmap.isNull())
+	QImage image(picturePath);
+	if (image.isNull())
 	{
 		qWarning() << QString("pixmap load fail: name: %1, path: %2").arg(pixmapName).arg(picturePath);
 	}
 	else
 	{
-		pixmapHash.insert(pixmapName, pixmap);
+		imageHash.insert(pixmapName, image);
+		pixmapCache.remove(pixmapName); // In case of reload
 		pathHash.insert(pixmapName, picturePath);
 	}
 }
@@ -60,12 +61,20 @@ void Picture::loadPixmap(const QString& picturePath)
 
 QPixmap Picture::getPixmap(const QString& pixmapName)
 {
-	if (pixmapHash.find(pixmapName) != pixmapHash.end())
-		return pixmapHash[pixmapName];
-	else
-		qWarning() << QString("pixmap get fail: name: %1").arg(pixmapName);
+	auto cachedIt = pixmapCache.find(pixmapName);
+	if (cachedIt != pixmapCache.end())
+		return cachedIt.value();
 
-	return QPixmap();
+	auto imageIt = imageHash.find(pixmapName);
+	if (imageIt == imageHash.end()) {
+		qWarning() << QString("pixmap get fail: name: %1").arg(pixmapName);
+		return QPixmap();
+	}
+
+	// Convert QImage -> QPixmap lazily in the caller's thread (expected to be GUI thread).
+	QPixmap pixmap = QPixmap::fromImage(imageIt.value());
+	pixmapCache.insert(pixmapName, pixmap);
+	return pixmap;
 }
 
 std::vector<QPixmap> Picture::getPixmapList(const std::pair<QString, int>& pictureStringList)
@@ -74,7 +83,7 @@ std::vector<QPixmap> Picture::getPixmapList(const std::pair<QString, int>& pictu
 	for (int i = 0; i < pictureStringList.second; ++i)
 	{
 		QString pictureString = pictureStringList.first.arg(i);
-		QPixmap pixmap = pixmapHash[pictureString];
+		QPixmap pixmap = getPixmap(pictureString);
 		pixmapList.push_back(pixmap);
 	}
 	
@@ -87,14 +96,15 @@ void Picture::loadPixmapList(const QString& picturePathTemplate, int pictureNum)
 	{
 		QString picturePath = picturePathTemplate.arg(i + 1);
 		QString pixmapName = Util::pathToLowerCamelCase(picturePath);
-		QPixmap pixmap(picturePath);
-		if (pixmap.isNull())
+		QImage image(picturePath);
+		if (image.isNull())
 		{
 			qWarning() << QString("pixmap load fail: name: %1, path: %2").arg(pixmapName).arg(picturePath);
 		}
 		else
 		{
-			pixmapHash.insert(pixmapName, pixmap);
+			imageHash.insert(pixmapName, image);
+			pixmapCache.remove(pixmapName);
 			pathHash.insert(pixmapName, picturePath);
 		}
 	}
