@@ -8,6 +8,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QMainWindow>
+#include <QMetaObject>
 #include <QStackedWidget>
 #include <QThread>
 #include <QObject>
@@ -36,23 +37,25 @@ int main(int argc, char* argv[])
 		qDebug() << "resource load finished";
 	});
 
+	// finished 在「即将结束的工作线程」上发出，不能直接在此创建 QWidget；投递到 GUI 线程。
 	QObject::connect(resourceThread, &QThread::finished, [] {
-		// 创建主窗口和场景容器（必须在 GUI 线程，且资源已就绪）
-		auto mainWindow = new QMainWindow();
-		auto* sceneContainer = new QStackedWidget(mainWindow);
-		mainWindow->setCentralWidget(sceneContainer);
-		mainWindow->resize(SceneBase::sceneWidth, SceneBase::sceneHeight);
+		QMetaObject::invokeMethod(
+			qApp,
+			[] {
+				auto mainWindow = new QMainWindow();
+				auto* sceneContainer = new QStackedWidget(mainWindow);
+				mainWindow->setCentralWidget(sceneContainer);
+				mainWindow->resize(SceneBase::sceneWidth, SceneBase::sceneHeight);
 
-		// 注册场景
-		registerSceneAll();
+				registerSceneAll();
 
-		// 初始化场景管理器
-		SceneManager& sceneMgr = SceneManager::instance(sceneContainer);
+				SceneManager& sceneMgr = SceneManager::instance(sceneContainer);
 
-		// 切换到第一场景
-		sceneMgr.switchScene(SceneMenu::sceneName);
+				sceneMgr.switchScene(SceneMenu::sceneName);
 
-		mainWindow->show();
+				mainWindow->show();
+			},
+			Qt::QueuedConnection);
 	});
 
 	QObject::connect(resourceThread, &QThread::finished, resourceThread, &QObject::deleteLater);
