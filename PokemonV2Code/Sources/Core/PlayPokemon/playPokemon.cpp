@@ -1,10 +1,19 @@
-﻿#include "Core/PlayPokemon/playPokemon.h"
+#include "Core/PlayPokemon/playPokemon.h"
 
 
-PokemonBase* PlayPokemon::playPokemon1P = PokemonBulbasaur::getInstance1P();
-PokemonBase* PlayPokemon::playPokemon2P = PokemonBulbasaur::getInstance2P();
+PokemonBase* PlayPokemon::playPokemon1P = nullptr;
+PokemonBase* PlayPokemon::playPokemon2P = nullptr;
 PokemonType PlayPokemon::currentPokemon1P = PokemonType::Bulbasaur;
 PokemonType PlayPokemon::currentPokemon2P = PokemonType::Bulbasaur;
+
+void PlayPokemon::init()
+{
+	// Create Pokemon instances in GUI thread (they build QPixmaps).
+	if (playPokemon1P == nullptr)
+		playPokemon1P = PokemonBulbasaur::getInstance1P();
+	if (playPokemon2P == nullptr)
+		playPokemon2P = PokemonBulbasaur::getInstance2P();
+}
 
 void PlayPokemon::switchPreviousPokemon(bool isSwitch1P)
 {

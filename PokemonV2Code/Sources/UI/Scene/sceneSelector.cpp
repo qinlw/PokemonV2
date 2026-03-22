@@ -1,4 +1,4 @@
-﻿#include "Core/PlayPokemon/playPokemon.h"
+#include "Core/PlayPokemon/playPokemon.h"
 #include "UI/Scene/sceneSelector.h"
 #include "UI/Scene/sceneMenu.h"
 
@@ -7,6 +7,9 @@ QString SceneSelector::sceneName = "SceneSelector";
 
 SceneSelector::SceneSelector(QWidget* parent) : SceneBase(parent)
 {
+	// Ensure Pokemon instances exist (and are created in GUI thread).
+	PlayPokemon::init();
+
 	// 初始化QPixmap
 	selectorBaseground = globalPicture->getPixmap(globalString->selectorBackground);
 	selectorPokemonPixmap1P = PlayPokemon::playPokemon1P->getSelectorPokemonPixmap();
