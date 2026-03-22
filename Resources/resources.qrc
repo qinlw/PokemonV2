@@ -13,6 +13,10 @@
     <qresource prefix="/Scene/SceneSelector">
         <file alias="return_button">ResFiles/Scene/SceneSelector/return_button.png</file>
         <file alias="pokeball">ResFiles/Scene/SceneSelector/pokeball.png</file>
+        <file alias="label_1p">ResFiles/Scene/SceneSelector/label_1p.png</file>
+        <file alias="label_2p">ResFiles/Scene/SceneSelector/label_2p.png</file>
+        <file alias="selector_btn_1p_idle">ResFiles/Scene/SceneSelector/selector_btn_1p_idle.png</file>
+        <file alias="selector_btn_2p_idle">ResFiles/Scene/SceneSelector/selector_btn_2p_idle.png</file>
     </qresource>
     <qresource prefix="/Pokemon">
         <file alias="selector_bulbasaur_1">ResFiles/Pokemon/selector_bulbasaur_1.png</file>

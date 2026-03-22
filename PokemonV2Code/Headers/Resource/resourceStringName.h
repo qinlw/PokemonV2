@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 
 #include <QString>
 
@@ -18,6 +18,10 @@ public:
 	// SceneSelector
 	QString returnButton;
 	QString pokeball;
+	QString label1P;
+	QString label2P;
+	QString selectorBtn1pIdle;
+	QString selectorBtn2pIdle;
 	// Pokemon
 	std::pair<QString, int> selectorBulbasaur;
 	std::pair<QString, int> selectorCharmander;

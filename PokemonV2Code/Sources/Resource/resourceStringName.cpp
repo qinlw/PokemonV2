@@ -1,4 +1,4 @@
-﻿#include "Resource/resourceStringName.h"
+#include "Resource/resourceStringName.h"
 #include "util.h"
 
 
@@ -18,6 +18,10 @@ ResourceStringName::ResourceStringName()
 	// sceneSelector
 	returnButton = Util::pathToLowerCamelCase(":/Scene/SceneSelector/return_button");
 	pokeball = Util::pathToLowerCamelCase(":/Scene/SceneSelector/pokeball");
+	label1P = Util::pathToLowerCamelCase(":/Scene/SceneSelector/label_1p");
+	label2P = Util::pathToLowerCamelCase(":/Scene/SceneSelector/label_2p");
+	selectorBtn1pIdle = Util::pathToLowerCamelCase(":/Scene/SceneSelector/selector_btn_1p_idle");
+	selectorBtn2pIdle = Util::pathToLowerCamelCase(":/Scene/SceneSelector/selector_btn_2p_idle");
 
 	// pokemon
 	loadStringList(selectorBulbasaur, ":/Pokemon/selector_bulbasaur_%1", 2);

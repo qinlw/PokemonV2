@@ -19,6 +19,10 @@ Picture::Picture()
 	// sceneSelector
 	loadPixmap(":/Scene/SceneSelector/return_button");
 	loadPixmap(":/Scene/SceneSelector/pokeball");
+	loadPixmap(":/Scene/SceneSelector/label_1p");
+	loadPixmap(":/Scene/SceneSelector/label_2p");
+	loadPixmap(":/Scene/SceneSelector/selector_btn_1p_idle");
+	loadPixmap(":/Scene/SceneSelector/selector_btn_2p_idle");
 
 	// pokemon
 	loadPixmapList(":/Pokemon/selector_bulbasaur_%1", 2);
